@@ -15,6 +15,7 @@ services:
         value: 8000
     healthCheckPath: /health
     autoDeploy: true
+    region: oregon
 
   # Frontend React Service
   - type: web
