@@ -21,8 +21,9 @@ Your code is ready. Now follow these steps to make your app live:
    - **Environment**: `Python`
    - **Region**: `Oregon` (or closest to you)
    - **Branch**: `main`
-   - **Build Command**: `pip install -r backend/requirements.txt`
-   - **Start Command**: `cd backend && uvicorn main:app --host 0.0.0.0 --port $PORT`
+   - **Root Directory**: `backend` ⚠️ **IMPORTANT!**
+   - **Build Command**: `pip install -r requirements.txt`
+   - **Start Command**: `uvicorn main:app --host 0.0.0.0 --port $PORT`
    - **Plan**: Free
 
 ### **3. Deploy Backend**
@@ -88,6 +89,7 @@ Your code is ready. Now follow these steps to make your app live:
 2. **Verify environment variable** is set correctly in Vercel
 3. **Ensure backend is running** before testing frontend
 4. **Wait for full deployment** (don't test too early)
+5. **Make sure you set Root Directory to `backend`** in Render
 
 ---
 
@@ -104,6 +106,15 @@ Your code is ready. Now follow these steps to make your app live:
 - **Backend**: 5-10 minutes
 - **Frontend**: 3-5 minutes
 - **Testing**: 5 minutes
+
+---
+
+## ⚠️ **CRITICAL SETTING FOR RENDER**
+
+**When creating the backend service in Render, you MUST set:**
+- **Root Directory**: `backend`
+
+**This tells Render to look in the backend folder for all files!**
 
 ---
 
