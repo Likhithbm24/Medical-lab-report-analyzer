@@ -1,0 +1,32 @@
+services:
+  # Backend FastAPI Service
+  - type: web
+    name: medical-insights-backend
+    env: python
+    plan: free
+    buildCommand: |
+      pip install -r backend/requirements.txt
+    startCommand: |
+      cd backend && uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.9.16
+      - key: PORT
+        value: 8000
+    healthCheckPath: /health
+    autoDeploy: true
+
+  # Frontend React Service
+  - type: web
+    name: medical-insights-frontend
+    env: static
+    plan: free
+    buildCommand: |
+      cd frontend
+      npm install
+      npm run build
+    staticPublishPath: frontend/dist
+    envVars:
+      - key: REACT_APP_API_URL
+        value: https://medical-insights-backend.onrender.com
+    autoDeploy: true

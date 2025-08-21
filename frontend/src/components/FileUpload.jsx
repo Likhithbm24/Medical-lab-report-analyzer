@@ -10,6 +10,9 @@ export default function FileUpload() {
   const [error, setError] = useState(null);
   const resultsRef = useRef(null);
 
+  // Get API URL from environment variable or fallback to localhost
+  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
+
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
     setSuccess(false);
@@ -31,7 +34,7 @@ export default function FileUpload() {
 
     try {
       console.log("Uploading file:", file.name);
-      const res = await axios.post("http://localhost:8000/upload", formData);
+      const res = await axios.post(`${API_URL}/upload`, formData);
       console.log("Response received:", res.data);
 
       if (res.data.error) {
