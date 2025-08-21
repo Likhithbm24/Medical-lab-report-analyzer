@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sample Lab Report</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 40px;
+        line-height: 1.6;
+      }
+      .header {
+        text-align: center;
+        border-bottom: 2px solid #333;
+        padding-bottom: 20px;
+        margin-bottom: 30px;
+      }
+      .lab-results {
+        margin: 20px 0;
+      }
+      .result-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 0;
+        border-bottom: 1px solid #ddd;
+      }
+      .test-name {
+        font-weight: bold;
+        width: 200px;
+      }
+      .test-value {
+        width: 100px;
+        text-align: center;
+      }
+      .test-range {
+        width: 150px;
+        color: #666;
+      }
+      .test-unit {
+        width: 80px;
+        color: #666;
+      }
+      .abnormal {
+        color: red;
+        font-weight: bold;
+      }
+      .normal {
+        color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1>MEDICAL LABORATORY REPORT</h1>
+      <p>
+        <strong>Patient:</strong> John Doe | <strong>Date:</strong> 2025-08-21
+      </p>
+      <p>
+        <strong>Lab ID:</strong> LAB-2025-001 | <strong>Physician:</strong> Dr.
+        Smith
+      </p>
+    </div>
+
+    <h2>COMPREHENSIVE METABOLIC PANEL</h2>
+
+    <div class="lab-results">
+      <div class="result-row">
+        <span class="test-name">Hemoglobin</span>
+        <span class="test-value normal">14.2</span>
+        <span class="test-range">13.0 - 17.0</span>
+        <span class="test-unit">g/dL</span>
+      </div>
+
+      <div class="result-row">
+        <span class="test-name">TSH</span>
+        <span class="test-value normal">2.8</span>
+        <span class="test-range">0.4 - 4.5</span>
+        <span class="test-unit">mIU/L</span>
+      </div>
+
+      <div class="result-row">
+        <span class="test-name">WBC</span>
+        <span class="test-value normal">7.5</span>
+        <span class="test-range">4.5 - 11.0</span>
+        <span class="test-unit">K/μL</span>
+      </div>
+
+      <div class="result-row">
+        <span class="test-name">RBC</span>
+        <span class="test-value normal">5.2</span>
+        <span class="test-range">4.7 - 6.1</span>
+        <span class="test-unit">M/μL</span>
+      </div>
+
+      <div class="result-row">
+        <span class="test-name">Platelets</span>
+        <span class="test-value normal">250</span>
+        <span class="test-range">150 - 450</span>
+        <span class="test-unit">K/μL</span>
+      </div>
+
+      <div class="result-row">
+        <span class="test-name">Cholesterol</span>
+        <span class="test-value abnormal">220</span>
+        <span class="test-range">&lt; 200</span>
+        <span class="test-unit">mg/dL</span>
+      </div>
+
+      <div class="result-row">
+        <span class="test-name">Glucose</span>
+        <span class="test-value normal">95</span>
+        <span class="test-range">&lt; 100</span>
+        <span class="test-unit">mg/dL</span>
+      </div>
+
+      <div class="result-row">
+        <span class="test-name">Creatinine</span>
+        <span class="test-value normal">1.0</span>
+        <span class="test-range">0.7 - 1.3</span>
+        <span class="test-unit">mg/dL</span>
+      </div>
+
+      <div class="result-row">
+        <span class="test-name">Bilirubin</span>
+        <span class="test-value normal">0.8</span>
+        <span class="test-range">&lt; 1.2</span>
+        <span class="test-unit">mg/dL</span>
+      </div>
+
+      <div class="result-row">
+        <span class="test-name">LDL</span>
+        <span class="test-value abnormal">140</span>
+        <span class="test-range">&lt; 100</span>
+        <span class="test-unit">mg/dL</span>
+      </div>
+
+      <div class="result-row">
+        <span class="test-name">HDL</span>
+        <span class="test-value normal">55</span>
+        <span class="test-range">&gt; 40</span>
+        <span class="test-unit">mg/dL</span>
+      </div>
+    </div>
+
+    <div style="margin-top: 40px">
+      <h3>NOTES:</h3>
+      <ul>
+        <li>
+          All values marked in <span style="color: red">red</span> are outside
+          normal range
+        </li>
+        <li>
+          Values marked in <span style="color: green">green</span> are within
+          normal range
+        </li>
+        <li>
+          This report contains both normal and abnormal values for testing
+          purposes
+        </li>
+      </ul>
+    </div>
+
+    <div style="margin-top: 40px; text-align: center; color: #666">
+      <p><strong>Report Generated:</strong> 2025-08-21 13:45:00</p>
+      <p><strong>Lab Technician:</strong> Jane Johnson</p>
+      <p><strong>Verified By:</strong> Dr. Michael Brown</p>
+    </div>
+  </body>
+</html>
