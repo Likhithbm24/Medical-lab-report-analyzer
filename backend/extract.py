@@ -1,11 +1,11 @@
-import fitz  # type: ignore # PyMuPDF
+import pdfplumber
 import re
 
 def extract_lab_data(pdf_path):
     text = ""
-    with fitz.open(pdf_path) as doc:
+    with pdfplumber.open(pdf_path) as doc:
         for page in doc:
-            text += page.get_text()
+            text += page.extract_text() or ""
 
     # Define regex patterns for lab values - updated to handle various formats
     patterns = {

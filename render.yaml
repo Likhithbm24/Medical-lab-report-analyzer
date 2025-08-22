@@ -5,13 +5,12 @@ services:
     env: python
     plan: free
     buildCommand: |
-      apt-get update && apt-get install -y build-essential python3-dev
       pip install -r backend/requirements.txt
     startCommand: |
       cd backend && uvicorn main:app --host 0.0.0.0 --port $PORT
     envVars:
       - key: PYTHON_VERSION
-        value: 3.9.16
+        value: 3.13.4
       - key: PORT
         value: 8000
       - key: CORS_ORIGIN
