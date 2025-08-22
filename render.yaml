@@ -14,21 +14,8 @@ services:
         value: 3.9.16
       - key: PORT
         value: 8000
+      - key: CORS_ORIGIN
+        value: https://your-frontend-name.vercel.app
     healthCheckPath: /health
     autoDeploy: true
     region: oregon
-
-  # Frontend React Service
-  - type: web
-    name: medical-insights-frontend
-    env: static
-    plan: free
-    buildCommand: |
-      cd frontend
-      npm install
-      npm run build
-    staticPublishPath: frontend/dist
-    envVars:
-      - key: REACT_APP_API_URL
-        value: https://medical-insights-backend.onrender.com
-    autoDeploy: true

@@ -14,7 +14,13 @@ app = FastAPI(
 # Allow frontend to connect
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=[
+        "http://localhost:3000",  # Local development
+        "http://localhost:5173",  # Vite dev server
+        "https://*.vercel.app",   # Vercel deployments
+        "https://*.onrender.com", # Render deployments
+        os.environ.get("CORS_ORIGIN", "*")  # From environment variable
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
