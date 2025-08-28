@@ -28,17 +28,43 @@ app.add_middleware(
 
 @app.post("/upload")
 async def upload_file(file: UploadFile = File(...)):
+    # Validate file type
+    if not file.filename or not file.filename.lower().endswith('.pdf'):
+        return {
+            "error": "Invalid file type. Please upload a PDF file.",
+            "data": {},
+            "explanation": {}
+        }
+    
+    # Validate file size (max 10MB)
+    if file.size and file.size > 10 * 1024 * 1024:
+        return {
+            "error": "File too large. Please upload a PDF smaller than 10MB.",
+            "data": {},
+            "explanation": {}
+        }
+    
     # Create temp directory if it doesn't exist
     temp_dir = "temp"
     os.makedirs(temp_dir, exist_ok=True)
     
     file_location = f"{temp_dir}/{file.filename}"
     
-    # Save the file
-    with open(file_location, "wb") as buffer:
-        shutil.copyfileobj(file.file, buffer)
-    
     try:
+        # Save the file
+        with open(file_location, "wb") as buffer:
+            shutil.copyfileobj(file.file, buffer)
+        
+        # Verify file was saved and is readable
+        if not os.path.exists(file_location):
+            raise Exception("Failed to save uploaded file")
+        
+        file_size = os.path.getsize(file_location)
+        if file_size == 0:
+            raise Exception("Uploaded file is empty")
+        
+        print(f"File saved successfully: {file_location}, size: {file_size} bytes")
+        
         # Extract data
         lab_data = extract_lab_data(file_location)
         
@@ -52,13 +78,20 @@ async def upload_file(file: UploadFile = File(...)):
             "data": lab_data,
             "explanation": interpretation
         }
+        
     except Exception as e:
         # Clean up temporary file on error
         if os.path.exists(file_location):
-            os.remove(file_location)
+            try:
+                os.remove(file_location)
+            except:
+                pass  # Ignore cleanup errors
+        
+        error_msg = f"Analysis failed: {str(e)}"
+        print(f"Error processing file {file.filename}: {error_msg}")
         
         return {
-            "error": f"Analysis failed: {str(e)}",
+            "error": error_msg,
             "data": {},
             "explanation": {}
         }
